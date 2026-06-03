@@ -1,0 +1,6 @@
+org\acme\resource\EmpresaResource.class
+org\acme\bo\ValidacaoBO.class
+org\acme\dao\EmpresaDAO.class
+org\acme\domain\Empresa.class
+org\acme\conexao\ConexaoFactory.class
+org\acme\bo\EmpresaBO.class
