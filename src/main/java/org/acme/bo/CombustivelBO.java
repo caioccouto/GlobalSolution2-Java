@@ -17,20 +17,4 @@ public class CombustivelBO {
     public Combustivel buscarPorIdBo(Long id) throws SQLException, ClassNotFoundException {
         return combustivelDAO.buscarPorId(id);
     }
-
-    public void inserirBo(Combustivel c) throws SQLException, ClassNotFoundException {
-        ValidacaoBO.validarNome(c.getNome());
-        ValidacaoBO.validarFatorEmissao(c.getFatorEmissaoCarbono());
-        combustivelDAO.inserir(c);
-    }
-
-    public void atualizarBo(Combustivel c) throws SQLException, ClassNotFoundException {
-        ValidacaoBO.validarNome(c.getNome());
-        ValidacaoBO.validarFatorEmissao(c.getFatorEmissaoCarbono());
-        combustivelDAO.atualizar(c);
-    }
-
-    public void deletarBo(Long id) throws SQLException, ClassNotFoundException {
-        combustivelDAO.deletar(id);
-    }
 }
