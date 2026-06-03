@@ -73,4 +73,16 @@ public class ValidacaoBO {
             throw new IllegalArgumentException("Data da viagem não pode ser uma data futura!");
         }
     }
+
+    public static void validarCoordenadas(Double lat, Double lon, String ponto) {
+        if (lat == null || lon == null) {
+            throw new IllegalArgumentException("Coordenadas de " + ponto + " não podem ser nulas!");
+        }
+        if (lat < -90 || lat > 90) {
+            throw new IllegalArgumentException("Latitude de " + ponto + " inválida! Deve estar entre -90 e 90.");
+        }
+        if (lon < -180 || lon > 180) {
+            throw new IllegalArgumentException("Longitude de " + ponto + " inválida! Deve estar entre -180 e 180.");
+        }
+    }
 }
