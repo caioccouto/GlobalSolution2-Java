@@ -14,7 +14,7 @@ public class ViagemDAO {
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, new String[]{"ID"})) {
-            ps.setDate(1, Date.valueOf(v.getDataViagem()));
+            ps.setDate(1, Date.valueOf(v.getDtViagem()));
             ps.setDouble(2, v.getCargaTransportadaKg());
             ps.setDouble(3, v.getDistanciaPercorridaKm());
             ps.setLong(4, v.getCaminhaoId());
@@ -34,7 +34,7 @@ public class ViagemDAO {
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setDate(1, Date.valueOf(v.getDataViagem()));
+            ps.setDate(1, Date.valueOf(v.getDtViagem()));
             ps.setDouble(2, v.getCargaTransportadaKg());
             ps.setDouble(3, v.getDistanciaPercorridaKm());
             ps.setLong(4, v.getCaminhaoId());
@@ -86,7 +86,7 @@ public class ViagemDAO {
     private Viagem mapear(ResultSet rs) throws SQLException {
         Viagem v = new Viagem();
         v.setId(rs.getLong("ID"));
-        v.setDataViagem(rs.getDate("DATA_VIAGEM").toLocalDate());
+        v.setDtViagem(rs.getDate("DATA_VIAGEM").toLocalDate());
         v.setCargaTransportadaKg(rs.getDouble("CARGA_TRANSPORTADA_KG"));
         v.setDistanciaPercorridaKm(rs.getDouble("DISTANCIA_PERCORRIDA_KM"));
         v.setCaminhaoId(rs.getLong("CAMINHAO_ID"));

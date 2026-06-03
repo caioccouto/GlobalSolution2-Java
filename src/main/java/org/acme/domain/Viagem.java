@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Viagem {
     private Long id;
-    private LocalDate dataViagem;
+    private LocalDate dtViagem;
     private Double cargaTransportadaKg;
     private Double distanciaPercorridaKm;
     private Long caminhaoId;
@@ -14,9 +14,9 @@ public class Viagem {
 
     public Viagem() {}
 
-    public Viagem(LocalDate dataViagem, Double cargaTransportadaKg, Double distanciaPercorridaKm,
+    public Viagem(LocalDate dtViagem, Double cargaTransportadaKg, Double distanciaPercorridaKm,
                   Long caminhaoId, Long motoristaId, Long rotaId, Long combustivelId) {
-        this.dataViagem = dataViagem;
+        this.dtViagem = dtViagem;
         this.cargaTransportadaKg = cargaTransportadaKg;
         this.distanciaPercorridaKm = distanciaPercorridaKm;
         this.caminhaoId = caminhaoId;
@@ -28,8 +28,8 @@ public class Viagem {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public LocalDate getDataViagem() { return dataViagem; }
-    public void setDataViagem(LocalDate dataViagem) { this.dataViagem = dataViagem; }
+    public LocalDate getDtViagem() { return dtViagem; }
+    public void setDtViagem(LocalDate dtViagem) { this.dtViagem = dtViagem; }
 
     public Double getCargaTransportadaKg() { return cargaTransportadaKg; }
     public void setCargaTransportadaKg(Double cargaTransportadaKg) { this.cargaTransportadaKg = cargaTransportadaKg; }

@@ -8,7 +8,6 @@ import org.acme.domain.Emissao;
 import org.acme.domain.Viagem;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class ViagemBO {
@@ -37,7 +36,7 @@ public class ViagemBO {
     }
 
     public void inserirBo(Viagem v) throws SQLException, ClassNotFoundException {
-        ValidacaoBO.validarDataViagem(v.getDataViagem());
+        ValidacaoBO.validarDataViagem(v.getDtViagem());
         ValidacaoBO.validarCarga(v.getCargaTransportadaKg());
         ValidacaoBO.validarDistancia(v.getDistanciaPercorridaKm());
 
@@ -72,7 +71,7 @@ public class ViagemBO {
     }
 
     public void atualizarBo(Viagem v) throws SQLException, ClassNotFoundException {
-        ValidacaoBO.validarDataViagem(v.getDataViagem());
+        ValidacaoBO.validarDataViagem(v.getDtViagem());
         ValidacaoBO.validarCarga(v.getCargaTransportadaKg());
         ValidacaoBO.validarDistancia(v.getDistanciaPercorridaKm());
         viagemDAO.atualizar(v);
