@@ -8,14 +8,12 @@ public class ConexaoFactory {
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
 
-        String url = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl";
-        String user = "rm563452";
-        String pwd = "260506";
+        Class.forName("oracle.jdbc.driver.OracleDriver");
 
-        try{
-            return DriverManager.getConnection(url, user, pwd);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        String url = System.getenv("DB_URL");
+        String user = System.getenv("DB_USER");
+        String pwd = System.getenv("DB_PASSWORD");
+
+        return DriverManager.getConnection(url, user, pwd);
     }
 }
