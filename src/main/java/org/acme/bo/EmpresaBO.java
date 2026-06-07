@@ -25,11 +25,13 @@ public class EmpresaBO {
         if (e.getDtCadastro() == null) {
             e.setDtCadastro(LocalDate.now());
         }
+        ValidacaoBO.validarMetaConsumo(e.getMetaConsumo());
         empresaDAO.inserir(e);
     }
 
     public void atualizarBo(Empresa e) throws SQLException, ClassNotFoundException {
         ValidacaoBO.validarNome(e.getNome());
+        ValidacaoBO.validarMetaConsumo(e.getMetaConsumo());
         empresaDAO.atualizar(e);
     }
 

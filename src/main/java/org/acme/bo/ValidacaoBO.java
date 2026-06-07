@@ -97,4 +97,10 @@ public class ValidacaoBO {
             throw new IllegalArgumentException("Índice de impacto ambiental não pode ser nulo!");
         }
     }
+
+    public static void validarMetaConsumo(Double meta){
+        if (meta == null || meta <= 0){
+            throw new IllegalArgumentException("Meta de Consumo deve ser maior que zero!");
+        }
+    }
 }

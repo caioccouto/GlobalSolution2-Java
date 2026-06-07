@@ -10,7 +10,7 @@ import java.util.List;
 public class EmpresaDAO {
 
     public void inserir(Empresa e) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO EMPRESA (NOME, CNPJ, SETOR, UF, CIDADE, RESPONSAVEL, DATA_CADASTRO) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO EMPRESA (NOME, CNPJ, SETOR, UF, CIDADE, RESPONSAVEL, DATA_CADASTRO, META_CONSUMO) VALUES (?,?,?,?,?,?,?,?)";
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, new String[]{"ID"})) {
@@ -21,6 +21,7 @@ public class EmpresaDAO {
             ps.setString(5, e.getCidade());
             ps.setString(6, e.getResponsavel());
             ps.setDate(7, Date.valueOf(e.getDtCadastro()));
+            ps.setDouble(8, e.getMetaConsumo());
             ps.executeUpdate();
 
             try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -30,7 +31,7 @@ public class EmpresaDAO {
     }
 
     public void atualizar(Empresa e) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE EMPRESA SET NOME=?, SETOR=?, UF=?, CIDADE=?, RESPONSAVEL=? WHERE ID=?";
+        String sql = "UPDATE EMPRESA SET NOME=?, SETOR=?, UF=?, CIDADE=?, RESPONSAVEL=?, META_CONSUMO=? WHERE ID=?";
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -39,7 +40,8 @@ public class EmpresaDAO {
             ps.setString(3, e.getUf());
             ps.setString(4, e.getCidade());
             ps.setString(5, e.getResponsavel());
-            ps.setLong(6, e.getId());
+            ps.setDouble(6, e.getMetaConsumo());
+            ps.setLong(7, e.getId());
             ps.executeUpdate();
         }
     }
@@ -91,6 +93,7 @@ public class EmpresaDAO {
         e.setCidade(rs.getString("CIDADE"));
         e.setResponsavel(rs.getString("RESPONSAVEL"));
         e.setDtCadastro(rs.getDate("DATA_CADASTRO").toLocalDate());
+        e.setMetaConsumo(rs.getDouble("META_CONSUMO"));
         return e;
     }
 }

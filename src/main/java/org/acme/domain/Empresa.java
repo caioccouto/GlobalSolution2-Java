@@ -11,10 +11,11 @@ public class Empresa {
     private String cidade;
     private String responsavel;
     private LocalDate dtCadastro;
+    private Double metaConsumo;
 
     public Empresa() {}
 
-    public Empresa(String nome, String cnpj, String setor, String uf, String cidade, String responsavel, LocalDate dtCadastro) {
+    public Empresa(String nome, String cnpj, String setor, String uf, String cidade, String responsavel, LocalDate dtCadastro, Double metaConsumo) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.setor = setor;
@@ -22,6 +23,7 @@ public class Empresa {
         this.cidade = cidade;
         this.responsavel = responsavel;
         this.dtCadastro = dtCadastro;
+        this.metaConsumo = metaConsumo;
     }
 
     public Long getId() { return id; }
@@ -47,4 +49,11 @@ public class Empresa {
 
     public LocalDate getDtCadastro() { return dtCadastro; }
     public void setDtCadastro(LocalDate dtCadastro) { this.dtCadastro = dtCadastro; }
+
+    public Double getMetaConsumo() {
+        return metaConsumo;
+    }
+    public void setMetaConsumo(Double metaConsumo) {
+        this.metaConsumo = metaConsumo;
+    }
 }
