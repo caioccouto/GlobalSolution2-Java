@@ -49,12 +49,6 @@ public class ValidacaoBO {
         }
     }
 
-    public static void validarFatorEmissao(Double fator) {
-        if (fator == null || fator <= 0) {
-            throw new IllegalArgumentException("Fator de emissão de carbono deve ser maior que zero!");
-        }
-    }
-
     public static void validarDistancia(Double distancia) {
         if (distancia == null || distancia <= 0) {
             throw new IllegalArgumentException("Distância deve ser maior que zero!");
@@ -83,6 +77,24 @@ public class ValidacaoBO {
         }
         if (lon < -180 || lon > 180) {
             throw new IllegalArgumentException("Longitude de " + ponto + " inválida! Deve estar entre -180 e 180.");
+        }
+    }
+
+    public static void validarConsumo(Double consumo){
+        if (consumo == null || consumo <= 0){
+            throw new IllegalArgumentException("Consumo estimado deve ser maior que zero!");
+        }
+    }
+
+    public static void validarCarbonoEmitido(Double carbono){
+        if (carbono == null || carbono <= 0) {
+            throw new IllegalArgumentException("CO2 emitido deve ser maior que zero!");
+        }
+    }
+
+    public static void validarImpactoAmbiental(String impacto){
+        if (impacto == null || impacto.trim().isEmpty()) {
+            throw new IllegalArgumentException("Índice de impacto ambiental não pode ser nulo!");
         }
     }
 }

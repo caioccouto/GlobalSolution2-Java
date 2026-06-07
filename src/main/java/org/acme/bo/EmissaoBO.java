@@ -19,17 +19,11 @@ public class EmissaoBO {
     }
 
     public void inserirBo(Emissao e) throws SQLException, ClassNotFoundException {
+        ValidacaoBO.validarConsumo(e.getConsumoEstimadoLitros());
+        ValidacaoBO.validarCarbonoEmitido(e.getCo2EmitidoKg());
+        ValidacaoBO.validarImpactoAmbiental(e.getIndiceImpactoAmbiental());
         if (e.getViagemId() == null) {
             throw new IllegalArgumentException("Emissão deve estar vinculada a uma viagem!");
-        }
-        if (e.getConsumoEstimadoLitros() == null || e.getConsumoEstimadoLitros() <= 0) {
-            throw new IllegalArgumentException("Consumo estimado deve ser maior que zero!");
-        }
-        if (e.getCo2EmitidoKg() == null || e.getCo2EmitidoKg() <= 0) {
-            throw new IllegalArgumentException("CO2 emitido deve ser maior que zero!");
-        }
-        if (e.getIndiceImpactoAmbiental() == null || e.getIndiceImpactoAmbiental().trim().isEmpty()) {
-            throw new IllegalArgumentException("Índice de impacto ambiental não pode ser nulo!");
         }
         emissaoDAO.inserir(e);
     }
